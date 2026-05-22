@@ -22,6 +22,7 @@ turtle_crossing_screen.onkey(turtle_player.move_forward, 'Up')
 
 cars = CarsGenerator()
 score_count = ScoreCounter()
+score_count.level_number_write()
 game_is_on = True
 
 while game_is_on:
@@ -29,5 +30,9 @@ while game_is_on:
     turtle_crossing_screen.update()
     cars.generate_random_car()
     cars.forward_the_car()
+    score_count.level_number_write()
+    if turtle_player.ycor() == 280:
+        score_count.next_level()
+        turtle_player.set_turtle_player()
 
 turtle_crossing_screen.exitonclick()
